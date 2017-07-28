@@ -158,7 +158,9 @@ class Crawler
     {
         $crawlUrl = $this->crawlQueue->getPendingUrlAtIndex($index);
 
-        $this->crawlObserver->hasBeenCrawled($crawlUrl->url, $response, $crawlUrl->foundOnUrl);
+        if(!is_null($crawlUrl)){
+            $this->crawlObserver->hasBeenCrawled($crawlUrl->url, $response, $crawlUrl->foundOnUrl);
+        }
     }
 
     protected function getCrawlRequests(): Generator
